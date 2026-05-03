@@ -13,7 +13,7 @@ def run_simulation(algorithm, animate=False):
 
     env = Environment()
 
-    for _ in range(100):
+    for _ in range(50):
         env.step(algorithm)
 
     return compute_metrics(env)
