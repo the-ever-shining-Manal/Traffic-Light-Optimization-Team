@@ -78,8 +78,10 @@ pip install pygame matplotlib
 
 ### Visual Comparisons
 ![Average Waiting Time vs Algorithm](data/Figure_1.png)
+
 *Figure 1: Average Waiting Time comparison across all three algorithms.*
 
 ![Cars Passed vs Algorithm](data/Figure_3.png)
+
 *Figure 2: Total throughput comparison showing the Smart algorithm's lead.*
-```
+
