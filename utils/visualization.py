@@ -29,7 +29,7 @@ CAR = (0, 170, 255)
 DIRECTIONS = ["N", "S", "E", "W"]
 
 
-# 🛣️ DRAW ROADS
+#  DRAW ROADS
 def draw_roads(screen):
     screen.fill(GRASS)
 
@@ -44,7 +44,7 @@ def draw_roads(screen):
         pygame.draw.line(screen, LANE, (i, HEIGHT//2), (i+20, HEIGHT//2), 2)
 
 
-# 🚗 DRAW CARS
+#  DRAW CARS
 def draw_cars(screen, queues):
     spacing = 20
 
@@ -68,7 +68,7 @@ def draw_cars(screen, queues):
         color = CAR_COLORS[i % len(CAR_COLORS)]
         pygame.draw.rect(screen, color, (WIDTH - 20 - i*spacing, HEIGHT//2 - 30, 20, 14))
 
-# 🚦 DRAW LIGHT PANELS
+#  DRAW LIGHT PANELS
 def draw_lights(screen, green):
     font = pygame.font.SysFont(None, 20)
 
@@ -89,7 +89,7 @@ def draw_lights(screen, green):
         screen.blit(label, (pos[0]+10, pos[1]-15))
 
 
-# 📊 GAME UI PANEL
+# GAME UI PANEL
 def draw_ui(screen, env):
     font = pygame.font.SysFont(None, 26)
 
@@ -113,7 +113,7 @@ def draw_ui(screen, env):
 def run_animation(algorithm_func):
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("🚦 Traffic AI Simulation")
+    pygame.display.set_caption(" Traffic Simulation")
 
     clock = pygame.time.Clock()
     env = Environment()
