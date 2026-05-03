@@ -49,26 +49,27 @@ def draw_cars(screen, queues):
     spacing = 20
 
     # North
-    for i in range(len(queues["N"])):
+    max_visible = 12
+    for i in range(min(len(queues["N"]), max_visible)):
         color = CAR_COLORS[i % len(CAR_COLORS)]
         pygame.draw.rect(screen, color, (WIDTH//2 - 30, 20 + i*spacing, 14, 20))
 
     # South
-    for i in range(len(queues["S"])):
+    for i in range(min(len(queues["S"]), max_visible)):
         color = CAR_COLORS[i % len(CAR_COLORS)]
         pygame.draw.rect(screen, color, (WIDTH//2 + 15, HEIGHT - 20 - i*spacing, 14, 20))
 
     # West
-    for i in range(len(queues["W"])):
+    for i in range(min(len(queues["W"]), max_visible)):
         color = CAR_COLORS[i % len(CAR_COLORS)]
         pygame.draw.rect(screen, color, (20 + i*spacing, HEIGHT//2 + 15, 20, 14))
 
     # East
-    for i in range(len(queues["E"])):
+    for i in range(min(len(queues["E"]), max_visible)):
         color = CAR_COLORS[i % len(CAR_COLORS)]
         pygame.draw.rect(screen, color, (WIDTH - 20 - i*spacing, HEIGHT//2 - 30, 20, 14))
 
-#  DRAW LIGHT PANELS
+#   LIGHT PANELS
 def draw_lights(screen, green):
     font = pygame.font.SysFont(None, 20)
 
@@ -110,7 +111,7 @@ def draw_ui(screen, env):
 
 
 # MAIN LOOP
-def run_animation(algorithm_func):
+def run_animation(algorithm_func, total_steps):
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption(" Traffic Simulation")
@@ -118,18 +119,15 @@ def run_animation(algorithm_func):
     clock = pygame.time.Clock()
     env = Environment()
 
-    for _ in range(50):  # or any fixed steps
+    for _ in range(total_steps):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
         # LOGIC (unchanged)
-        env.generate_cars()
+        env.step(algorithm_func)
         green = algorithm_func(env.queues, env.time)
-        env.move_cars(green)
-
-        env.time += 1
 
         # DRAW
         draw_roads(screen)
@@ -139,6 +137,6 @@ def run_animation(algorithm_func):
 
         pygame.display.flip()
 
-        clock.tick(2)
+        clock.tick(10)
     pygame.quit()
     return env

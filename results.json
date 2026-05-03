@@ -1,0 +1,17 @@
+{
+    "Greedy": {
+        "total_wait": 40716,
+        "average_wait": 0.50814332247557,
+        "cars_passed": 80127
+    },
+    "Fixed": {
+        "total_wait": 1014273,
+        "average_wait": 12.667486792641347,
+        "cars_passed": 80069
+    },
+    "Smart": {
+        "total_wait": 51462,
+        "average_wait": 0.6414308862021688,
+        "cars_passed": 80230
+    }
+}

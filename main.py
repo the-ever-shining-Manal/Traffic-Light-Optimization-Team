@@ -2,18 +2,19 @@ from simulation.environment import Environment
 from utils.visualization import run_animation
 from algorithms.greedy import greedy_light as greedy
 from algorithms.fixed import fixed_light as fixed
-#from algorithms.smart import """(name of your function)""" as smart
+from algorithms.smart import smart_algorithm as smart
 from utils.metrics import compute_metrics
-
+import json
+from utils.plot import plot_results
+SIM_STEPS = 100000
 def run_simulation(algorithm, animate=False):
     if animate:
-        from utils.visualization import run_animation
         env = run_animation(algorithm)
         return compute_metrics(env)
 
     env = Environment()
 
-    for _ in range(50):
+    for _ in range(SIM_STEPS):
         env.step(algorithm)
 
     return compute_metrics(env)
@@ -43,12 +44,12 @@ def main():
         print("\n===== FIXED METRICS =====")
         print(result)
 
-#    elif choice == "3":
-#        env = run_animation(smart)
-#        result = compute_metrics(env)
+    elif choice == "3":
+        env = run_animation(smart)
+        result = compute_metrics(env)
 
-#        print("\n===== smart METRICS =====")
-#        print(result)
+        print("\n===== smart METRICS =====")
+        print(result)
 
     elif choice == "4":
         run_full_report()
@@ -57,7 +58,7 @@ def run_full_report():
     algorithms = {
         "Greedy": greedy,
         "Fixed": fixed,
-        # "Smart": smart
+        "Smart": smart
     }
 
     results = {}
@@ -65,8 +66,7 @@ def run_full_report():
     for name, algo in algorithms.items():
         print(f"\nRunning {name}...")
 
-        env = run_animation(algo)
-        results[name] = compute_metrics(env)
+        results[name] = run_simulation(algo, animate=False)
 
     print("\n\n================ FULL REPORT ================\n")
 
@@ -76,4 +76,11 @@ def run_full_report():
         print(f"Average Wait: {data['average_wait']}")
         print(f"Cars Passed: {data['cars_passed']}")
         print("------------------------------------")
+
+    #  SAVE RESULTS
+    with open("results.json", "w") as f:
+        json.dump(results, f, indent=4)
+
+    #  PLOT RESULTS
+    plot_results(results)
 if __name__ == "__main__": main()
