@@ -1,4 +1,8 @@
-def print_results(results):
-    print("Total Waiting Time:", results["total_wait_time"])
-    print("Cars Passed:", results["cars_passed"])
-    print("Average Wait Time:", results["average_wait_time"])
+def compute_metrics(env):
+    avg_wait = env.total_wait / env.cars_passed if env.cars_passed > 0 else 0
+
+    return {
+        "total_wait": env.total_wait,
+        "average_wait": avg_wait,
+        "cars_passed": env.cars_passed
+    }
