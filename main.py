@@ -6,10 +6,10 @@ from algorithms.smart import smart_algorithm as smart
 from utils.metrics import compute_metrics
 import json
 from utils.plot import plot_results
-SIM_STEPS = 100000
+SIM_STEPS = 100
 def run_simulation(algorithm, animate=False):
     if animate:
-        env = run_animation(algorithm)
+        env = run_animation(algorithm,SIM_STEPS)
         return compute_metrics(env)
 
     env = Environment()
@@ -31,21 +31,21 @@ def main():
     choice = input("Choose algorithm: ")
 
     if choice == "1":
-        env = run_animation(greedy)
+        env = run_animation(greedy,SIM_STEPS)
         result = compute_metrics(env)
 
         print("\n===== GREEDY METRICS =====")
         print(result)
 
     elif choice == "2":
-        env = run_animation(fixed)
+        env = run_animation(fixed,SIM_STEPS)
         result = compute_metrics(env)
 
         print("\n===== FIXED METRICS =====")
         print(result)
 
     elif choice == "3":
-        env = run_animation(smart)
+        env = run_animation(smart,SIM_STEPS)
         result = compute_metrics(env)
 
         print("\n===== smart METRICS =====")
