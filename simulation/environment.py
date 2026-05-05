@@ -11,11 +11,11 @@ class Environment:
 
     def generate_cars(self):
         for d in DIRECTIONS:
-            if random.random() < 0.2:
+            if random.random() < 0.3:
                 self.queues[d].append({"arrival": self.time})
 
     def move_cars(self, green):
-        cars_to_pass = min(2, len(self.queues[green]))
+        cars_to_pass = min(1, len(self.queues[green]))
 
         for _ in range(cars_to_pass):
             car = self.queues[green].pop(0)

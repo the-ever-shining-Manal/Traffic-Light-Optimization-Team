@@ -1,17 +1,17 @@
 {
     "Greedy": {
-        "total_wait": 41174,
-        "average_wait": 0.512382090146594,
-        "cars_passed": 80358
+        "total_wait": 643,
+        "average_wait": 6.561224489795919,
+        "cars_passed": 98
     },
     "Fixed": {
-        "total_wait": 1012718,
-        "average_wait": 12.664674103346506,
-        "cars_passed": 79964
+        "total_wait": 1359,
+        "average_wait": 15.1,
+        "cars_passed": 90
     },
     "Smart": {
-        "total_wait": 51958,
-        "average_wait": 0.6460669965929721,
-        "cars_passed": 80422
+        "total_wait": 1006,
+        "average_wait": 10.06,
+        "cars_passed": 100
     }
 }

@@ -137,6 +137,6 @@ def run_animation(algorithm_func, total_steps):
 
         pygame.display.flip()
 
-        clock.tick(10)
+        clock.tick(3)
     pygame.quit()
     return env
