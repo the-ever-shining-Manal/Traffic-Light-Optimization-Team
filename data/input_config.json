@@ -1,0 +1,6 @@
+{
+    "sim_steps":      200,
+    "base_lambda":    0.30,
+    "rush_hour":      false,
+    "cars_per_green": 1
+}

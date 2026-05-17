@@ -25,11 +25,18 @@ class Environment:
             self.total_wait += wait_time
             self.cars_passed += 1
 
-    def step(self, algorithm_func):
+    def pre_step(self, algorithm_func):
         self.generate_cars()
+        self.current_green = algorithm_func(self.queues, self.time)
+        return self.current_green
 
-        green = algorithm_func(self.queues, self.time)
-
-        self.move_cars(green)
-
+    def post_step(self):
+        self.move_cars(self.current_green)
         self.time += 1
+
+    def step(self, algorithm_func):
+        green = self.pre_step(algorithm_func)
+        self.post_step()
+        return green
+
+

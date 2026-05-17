@@ -1,17 +1,42 @@
 {
-    "Greedy": {
-        "total_wait": 643,
-        "average_wait": 6.561224489795919,
-        "cars_passed": 98
+    "averages": {
+        "Greedy": {
+            "total_wait": 1359.1,
+            "average_wait": 10.878682543019911,
+            "cars_passed": 99.4,
+            "throughput": 0.994
+        },
+        "Fixed": {
+            "total_wait": 2165.233333333333,
+            "average_wait": 17.869762678930456,
+            "cars_passed": 85.3,
+            "throughput": 0.853
+        },
+        "Smart": {
+            "total_wait": 1230.7,
+            "average_wait": 10.07501487404939,
+            "cars_passed": 97.5,
+            "throughput": 0.975
+        }
     },
-    "Fixed": {
-        "total_wait": 1359,
-        "average_wait": 15.1,
-        "cars_passed": 90
-    },
-    "Smart": {
-        "total_wait": 1006,
-        "average_wait": 10.06,
-        "cars_passed": 100
+    "stats": {
+        "Greedy": {
+            "average_wait": {
+                "mean": 10.878682543019911,
+                "ci95": 0.8993672721273033
+            }
+        },
+        "Fixed": {
+            "average_wait": {
+                "mean": 17.869762678930456,
+                "ci95": 0.7273876925508587
+            }
+        },
+        "Smart": {
+            "average_wait": {
+                "mean": 10.07501487404939,
+                "ci95": 1.1728318190348554
+            }
+        }
     }
 }

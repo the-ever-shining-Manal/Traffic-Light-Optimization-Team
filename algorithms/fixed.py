@@ -1,5 +1,7 @@
-DIRECTIONS = ["N", "E", "S", "W"]
+from simulation.environment import DIRECTIONS
 
-def fixed_light(queues, time):
-    index = (time // 10) % 4  # change every 10 steps
+
+def fixed_light(queues:None, time: int):
+    """Baseline: rotate through directions every 10 steps."""
+    index = (time // 10) % len(DIRECTIONS)
     return DIRECTIONS[index]
